@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -58,11 +59,62 @@ public class TeebayBuggyTest {
 
 
             driver.findElement(By.cssSelector("button[type='submit']")).click();
+            Thread.sleep(3000);
+
+            // Create product
+            driver.findElement(By.cssSelector("button[class^='ui blue button']")).click();
+
+            WebElement webElement3 = driver.findElement(By.cssSelector("input[name='title']"));
+            webElement3.clear();
+            webElement3.sendKeys("Football");
+            Thread.sleep(3000);
+
+
+            WebElement dropdownElement = driver.findElement(By.cssSelector("div[name='categories']"));
+            dropdownElement.click();
+
+            WebElement optionElement1 = driver.findElement(By.xpath("/html/body/div/div[2]/div/div/div/form/div[2]/div/div/div[1]/span"));
+            optionElement1.click();
+            Thread.sleep(3000);
+
+            WebElement webElement4 = driver.findElement(By.cssSelector("textarea[name='description']"));
+            webElement4.clear();
+            webElement4.sendKeys("This is a large size Football.");
+            Thread.sleep(3000);
+
+            WebElement webElement5 = driver.findElement(By.cssSelector("input[name='purchase_price']"));
+            webElement5.clear();
+            webElement5.sendKeys("500");
+            Thread.sleep(3000);
+
+            WebElement webElement6 = driver.findElement(By.cssSelector("input[name='rent_price']"));
+            webElement6.clear();
+            webElement6.sendKeys("200");
+            Thread.sleep(3000);
+
+            WebElement optionElement2 = driver.findElement(By.xpath("/html/body/div/div[2]/div/div/div/form/div[4]/div[2]/div[2]/div/div[2]/div[4]/span"));
+            optionElement2.click();
+            Thread.sleep(3000);
+
+            driver.findElement(By.cssSelector("button[class='ui blue button']")).click();
+            Thread.sleep(3000);
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         } finally {
 
             driver.quit();
