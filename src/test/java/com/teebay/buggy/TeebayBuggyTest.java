@@ -10,7 +10,9 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Driver;
 import java.time.Duration;
+import java.util.List;
 import java.util.Properties;
 
 public class TeebayBuggyTest {
@@ -98,6 +100,87 @@ public class TeebayBuggyTest {
 
             driver.findElement(By.cssSelector("button[class='ui blue button']")).click();
             Thread.sleep(3000);
+
+            // Update Product
+
+            driver.findElement(By.cssSelector("div[class=\"sc-fqkvVR jQvrZo\"]")).click();
+            WebElement webElement7 = driver.findElement(By.cssSelector("input[name='purchase_price']"));
+            webElement7.clear();
+            webElement7.sendKeys("900");
+            Thread.sleep(3000);
+
+            driver.findElement(By.cssSelector("button[class='ui blue button']")).click();
+            Thread.sleep(3000);
+
+            // Delete Product
+            driver.findElement(By.xpath("/html/body/div/div[2]/div/div[2]/div[1]/div/div[1]/div[1]/button/i")).click();
+            Thread.sleep(3000);
+            driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/button[2]")).click();
+
+            driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div[1]/div/div[1]/div[1]/button")).click();
+            Thread.sleep(3000);
+            driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/button[2]")).click();
+
+            // Validate deleting all products from “My Products”
+            List<WebElement> productsAfterDeletion = driver.findElements(By.cssSelector(".product-item-class"));
+            if (productsAfterDeletion.isEmpty()) {
+                System.out.println("All products have been successfully deleted.");
+            } else {
+                System.out.println("Some products are still present on the product page.");
+            }
+
+            //Validate functionality of the Search filter on “Browse Products”
+
+            driver.findElement(By.xpath("/html/body/div/div[1]/a[2]")).click();
+
+            WebElement webElement8 = driver.findElement(By.cssSelector("input[name='title']"));
+            webElement8.clear();
+            webElement8.sendKeys("Lawn Mower");
+            Thread.sleep(3000);
+
+
+            WebElement dropdownElement2 = driver.findElement(By.cssSelector("div[name='categories']"));
+            dropdownElement2.click();
+
+            WebElement optionElement3 = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[1]/div/form/div[2]/div/div[2]/div[5]/span"));
+            optionElement3.click();
+            Thread.sleep(3000);
+
+            driver.findElement(By.cssSelector("button[class='ui blue button']")).click();
+            Thread.sleep(3000);
+
+            // Validate view count change on visit for products in “Browse Products"
+
+
+            driver.findElement(By.xpath("/html/body/div/div[1]/a[2]")).click();
+            WebElement selectedProduct = products.get(productIndex);
+            WebElement viewCountElement = selectedProduct.findElement(By.cssSelector(".view-count-class"));
+            int initialViewCount = Integer.parseInt(viewCountElement.getText());
+
+            driver.findElement(By.cssSelector("div[class=\"sc-fqkvVR jQvrZo\"]")).click();
+            driver.navigate().back();
+            driver.navigate().refresh();
+
+            WebElement updatedViewCountElement = updatedProduct.findElement(By.cssSelector(".view-count-class"));
+            int updatedViewCount = Integer.parseInt(updatedViewCountElement.getText());
+
+            if (updatedViewCount == initialViewCount + 1) {
+                System.out.println("View count has successfully incremented.");
+            } else {
+                System.out.println("View count did not increment as expected.");
+            }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
