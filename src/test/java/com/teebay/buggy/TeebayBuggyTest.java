@@ -61,7 +61,7 @@ public class TeebayBuggyTest {
 
 
             driver.findElement(By.cssSelector("button[type='submit']")).click();
-            Thread.sleep(3000);
+
 
             // Create product
             driver.findElement(By.cssSelector("button[class^='ui blue button']")).click();
@@ -69,7 +69,7 @@ public class TeebayBuggyTest {
             WebElement webElement3 = driver.findElement(By.cssSelector("input[name='title']"));
             webElement3.clear();
             webElement3.sendKeys("Football");
-            Thread.sleep(3000);
+
 
 
             WebElement dropdownElement = driver.findElement(By.cssSelector("div[name='categories']"));
@@ -77,29 +77,29 @@ public class TeebayBuggyTest {
 
             WebElement optionElement1 = driver.findElement(By.xpath("/html/body/div/div[2]/div/div/div/form/div[2]/div/div/div[1]/span"));
             optionElement1.click();
-            Thread.sleep(3000);
+
 
             WebElement webElement4 = driver.findElement(By.cssSelector("textarea[name='description']"));
             webElement4.clear();
             webElement4.sendKeys("This is a large size Football.");
-            Thread.sleep(3000);
+
 
             WebElement webElement5 = driver.findElement(By.cssSelector("input[name='purchase_price']"));
             webElement5.clear();
             webElement5.sendKeys("500");
-            Thread.sleep(3000);
+
 
             WebElement webElement6 = driver.findElement(By.cssSelector("input[name='rent_price']"));
             webElement6.clear();
             webElement6.sendKeys("200");
-            Thread.sleep(3000);
+
 
             WebElement optionElement2 = driver.findElement(By.xpath("/html/body/div/div[2]/div/div/div/form/div[4]/div[2]/div[2]/div/div[2]/div[4]/span"));
             optionElement2.click();
-            Thread.sleep(3000);
+
 
             driver.findElement(By.cssSelector("button[class='ui blue button']")).click();
-            Thread.sleep(3000);
+
 
             // Update Product
 
@@ -107,18 +107,18 @@ public class TeebayBuggyTest {
             WebElement webElement7 = driver.findElement(By.cssSelector("input[name='purchase_price']"));
             webElement7.clear();
             webElement7.sendKeys("900");
-            Thread.sleep(3000);
+
 
             driver.findElement(By.cssSelector("button[class='ui blue button']")).click();
-            Thread.sleep(3000);
+
 
             // Delete Product
             driver.findElement(By.xpath("/html/body/div/div[2]/div/div[2]/div[1]/div/div[1]/div[1]/button/i")).click();
-            Thread.sleep(3000);
+
             driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/button[2]")).click();
 
             driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div[1]/div/div[1]/div[1]/button")).click();
-            Thread.sleep(3000);
+
             driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/button[2]")).click();
 
             // Validate deleting all products from “My Products”
@@ -136,7 +136,7 @@ public class TeebayBuggyTest {
             WebElement webElement8 = driver.findElement(By.cssSelector("input[name='title']"));
             webElement8.clear();
             webElement8.sendKeys("Lawn Mower");
-            Thread.sleep(3000);
+
 
 
             WebElement dropdownElement2 = driver.findElement(By.cssSelector("div[name='categories']"));
@@ -144,10 +144,10 @@ public class TeebayBuggyTest {
 
             WebElement optionElement3 = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[1]/div/form/div[2]/div/div[2]/div[5]/span"));
             optionElement3.click();
-            Thread.sleep(3000);
+
 
             driver.findElement(By.cssSelector("button[class='ui blue button']")).click();
-            Thread.sleep(3000);
+
 
             // Validate view count change on visit for products in “Browse Products"
 
@@ -169,32 +169,6 @@ public class TeebayBuggyTest {
             } else {
                 System.out.println("View count did not increment as expected.");
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
